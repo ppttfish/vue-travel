@@ -11,52 +11,9 @@
 
 <script>
 export default {
-  name: 'NavList',
-  data () {
-    return {
-      list: [
-        {
-          id: '0001',
-          name: '找攻略',
-          class: 'i1'
-        },
-        {
-          id: '0002',
-          name: '看游记',
-          class: 'i2'
-        },
-        {
-          id: '0003',
-          name: '问达人',
-          class: 'i3'
-        },
-        {
-          id: '0004',
-          name: '结伴',
-          class: 'i4'
-        },
-        {
-          id: '0005',
-          name: '酒店',
-          class: 'i5'
-        },
-        {
-          id: '0006',
-          name: '旅行商城',
-          class: 'i6'
-        },
-        {
-          id: '0007',
-          name: '机票',
-          class: 'i7'
-        },
-        {
-          id: '0008',
-          name: '当地玩乐',
-          class: 'i8'
-        }
-      ]
-    }
+  name: 'HomeNav',
+  props: {
+    list: Array
   }
 }
 </script>

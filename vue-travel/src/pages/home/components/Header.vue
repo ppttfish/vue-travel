@@ -7,15 +7,20 @@
       <span class="iconfont search-icon">&#xe6ac;</span>
       输入城市/景点/游玩/主题
     </div>
-    <div class="header-right">
-      城市
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{ city }}
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
 }
 </script>
 
@@ -23,7 +28,7 @@ export default {
   @import '~styles/variables.styl'
   .header
     display: flex
-    height: .86rem
+    height: $navHeight
     align-items: center
     background-color: $bgColor
     color: #fff
@@ -31,8 +36,7 @@ export default {
       width: .64rem
       float: left
       .back-icon
-        margin-left: .1rem
-        font-size: .5rem
+        headerBack()
     .header-input
       flex: 1
       height: .64rem
@@ -49,6 +53,7 @@ export default {
       width: 1.5rem
       text-align: center
       margin-left: -.3rem
+      color: #fff
       &::after
          content: ''
          display: block
