@@ -1,8 +1,9 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-tab></city-tab>
-    <city-list :cityData="cityData"></city-list>
+    <city-tab @change="handleCityChange"></city-tab>
+    <city-list :cityData="cityDomesticData" v-show="isDomesticShow"></city-list>
+    <city-list :cityData="cityForiegnData" v-show="!isDomesticShow"></city-list>
   </div>
 </template>
 
@@ -15,7 +16,10 @@ export default {
   name: 'City',
   data () {
     return {
-      cityData: {}
+      cityDomesticData: {},
+      cityForiegnData: {},
+      showCityList: '',
+      isDomesticShow: true
     }
   },
   components: {
@@ -24,17 +28,29 @@ export default {
     CityList
   },
   methods: {
-    getCityInfo () {
+    getDomesticCityInfo () {
       axios.get('/api/city.json')
-        .then(this.logInfo)
+        .then(this.logDomesticInfo)
     },
-    logInfo (res) {
+    getForiegnCityInfo () {
+      axios.get('/api/foriegn.json')
+        .then(this.logForiegnInfo)
+    },
+    logDomesticInfo (res) {
       res = res.data
-      this.cityData = res.data
+      this.cityDomesticData = res.data
+    },
+    logForiegnInfo (res) {
+      res = res.data
+      this.cityForiegnData = res.data
+    },
+    handleCityChange (isDometicShow) {
+      this.isDomesticShow = isDometicShow
     }
   },
   mounted () {
-    this.getCityInfo()
+    this.getDomesticCityInfo()
+    this.getForiegnCityInfo()
   }
 }
 </script>

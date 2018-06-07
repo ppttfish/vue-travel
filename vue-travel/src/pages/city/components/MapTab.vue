@@ -1,15 +1,32 @@
 <template>
   <div class="map-tab">
-    <ul>
-      <li class="active">境内</li>
-      <li>境外·港澳台</li>
+    <ul @click="isShow">
+      <li :class="{ active: isDomesticActive }" id="domestic">境内</li>
+      <li :class="{ active: !isDomesticActive }" id="foreign">境外·港澳台</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CityTab'
+  name: 'CityTab',
+  data () {
+    return {
+      isDomesticActive: true
+    }
+  },
+  methods: {
+    isShow (e) {
+      const ele = e.target
+      if (ele.id === 'domestic') {
+        this.isDomesticActive = true
+        this.$emit('change', true)
+      } else {
+        this.isDomesticActive = false
+        this.$emit('change', false)
+      }
+    }
+  }
 }
 </script>
 

@@ -9,18 +9,18 @@
     <h2>字母排序</h2>
     <ul class="mp-list alphabet-list">
       <li v-for="letter of alphabet" :key="letter">
-        <a :href="'#' + 'domestic-' + letter">{{ letter }}</a>
+        <a :href="'#domestic-' + letter">{{ letter }}</a>
       </li>
     </ul>
-    <template v-for="(cities, key) of cityData.cities">
-      <a :id="'domestic-' + key" :key="key + 3000"></a>
-      <h2 :key="key + 1000">{{ key }}</h2>
-      <ul :key="key + 2000" class="mp-list">
+    <div v-for="(cities, key) of cityData.cities" :key="key">
+      <a :id="'domestic-' + key"></a>
+      <h2 >{{ key }}</h2>
+      <ul class="mp-list">
         <li v-for="city of cities" :key="city.id">
           <a>{{ city.name }}</a>
         </li>
       </ul>
-    </template>
+    </div>
   </div>
 </template>
 
