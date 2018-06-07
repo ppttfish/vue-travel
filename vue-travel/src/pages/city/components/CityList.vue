@@ -6,6 +6,21 @@
         <a>{{ hotCity.name }}</a>
       </li>
     </ul>
+    <h2>字母排序</h2>
+    <ul class="mp-list alphabet-list">
+      <li v-for="letter of alphabet" :key="letter">
+        <a :href="'#' + 'domestic-' + letter">{{ letter }}</a>
+      </li>
+    </ul>
+    <template v-for="(cities, key) of cityData.cities">
+      <a :id="'domestic-' + key" :key="key + 3000"></a>
+      <h2 :key="key + 1000">{{ key }}</h2>
+      <ul :key="key + 2000" class="mp-list">
+        <li v-for="city of cities" :key="city.id">
+          <a>{{ city.name }}</a>
+        </li>
+      </ul>
+    </template>
   </div>
 </template>
 
@@ -66,6 +81,7 @@ export default {
           border: 0
       li
         display: inline-block
+        position: relative
         width: 25%
         float: left
         height: .9rem;
@@ -74,6 +90,7 @@ export default {
         text-align: center
         border-bottom: .02rem solid #ddd;
         margin-bottom: -1px;
+        z-index: 1
         a
           color: black
 </style>
