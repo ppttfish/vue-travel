@@ -1,6 +1,6 @@
 <template>
-  <div class="city-head">
-      城市
+  <div class="city-head boder-bottom">
+      城市选择
     <router-link to="/">
       <div class="header-left">
         <span class="iconfont city-back">&#xe697;</span>
@@ -19,11 +19,12 @@ export default {
   @import '~styles/variables.styl'
   .city-head
     position: relative
-    height: $navHeight
-    line-height: $navHeight
+    height: .68rem
+    line-height: .88rem
     background: $bgColor
     color: #fff
     text-align: center
+    font-size: .32rem
     .header-left
       position: absolute
       color: #fff
