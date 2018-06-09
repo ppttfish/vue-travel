@@ -5,13 +5,15 @@
     </div>
     <div class="header-input">
       <span class="iconfont search-icon">&#xe6ac;</span>
-      输入城市/景点/游玩/主题
+      <span>输入城市/景点/游玩/主题</span>
     </div>
-    <router-link to="/city">
-      <div class="header-right">
-        {{ city }}
-      </div>
-    </router-link>
+
+    <div class="header-right">
+      <router-link to="/city">
+      {{ city }}
+      </router-link>
+    </div>
+
   </div>
 </template>
 
@@ -41,7 +43,7 @@ export default {
       flex: 1
       height: .64rem
       line-height .64rem
-      margin-left: .2rem
+      margin-left: .15rem
       color: #ccc
       background-color: #fff
       border-radius: .1rem
@@ -49,18 +51,19 @@ export default {
         padding-left: .1rem
         font-size: .016rem
     .header-right
-      float: right
-      width: 1.5rem
       text-align: center
-      margin-left: -.3rem
       color: #fff
+      a
+        display: inline-block
+        color: #fff
+        padding: 0 .1rem
       &::after
          content: ''
-         display: block
-         position: absolute
+         display: inline-block
+         position: relative
          width: 1px
-         right: .18rem
-         top: .38rem
+         top: .08rem
+         left: -.1rem
          border: 6px solid
          border-color: #fff transparent transparent
 </style>

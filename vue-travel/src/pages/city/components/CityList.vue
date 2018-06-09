@@ -1,9 +1,9 @@
 <template>
   <div class="city-list">
     <h2>热门城市</h2>
-    <ul class="mp-list">
+    <ul class="mp-list mp-list-tr3">
       <li v-for="hotCity of cityData.hotCities" :key="hotCity.id">
-        <a>{{ hotCity.name }}</a>
+        <a @click="handleCityChange(hotCity.name)">{{ hotCity.name }}</a>
       </li>
     </ul>
     <h2>字母排序</h2>
@@ -17,7 +17,7 @@
       <h2 >{{ key }}</h2>
       <ul class="mp-list">
         <li v-for="city of cities" :key="city.id">
-          <a>{{ city.name }}</a>
+          <a @click="handleCityChange(city.name)">{{ city.name }}</a>
         </li>
       </ul>
     </div>
@@ -34,6 +34,12 @@ export default {
     return {
       alphabet: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     }
+  },
+  methods: {
+    handleCityChange (city) {
+      this.$store.commit('cityChange', city)
+      this.$router.push('/')
+    }
   }
 }
 </script>
@@ -41,6 +47,7 @@ export default {
 <style lang="stylus" scoped>
   .city-list
     overflow hidden
+    background-color: #f5f5f5
     h2
       font-size: .24rem
       margin: .24rem .3rem
@@ -92,5 +99,6 @@ export default {
         margin-bottom: -1px;
         z-index: 1
         a
+          display: block
           color: black
 </style>
