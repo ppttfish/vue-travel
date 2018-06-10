@@ -103,6 +103,7 @@ export default {
               color: #616161
               font-size: .24rem
               line-height: .26rem
+              margin-left: .2rem
               vertical-align: text-bottom
           .item-price
             position: relative

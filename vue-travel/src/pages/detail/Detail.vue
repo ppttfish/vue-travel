@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="detail-page">
+    <detail-header></detail-header>
     <detail-banner></detail-banner>
     <detail-base-info></detail-base-info>
     <detail-tciket-list></detail-tciket-list>
@@ -7,12 +8,14 @@
 </template>
 
 <script>
-import DetailBanner from './components/banner'
-import DetailBaseInfo from './components/baseinfo'
-import DetailTciketList from './components/tciketList'
+import DetailHeader from './components/Header'
+import DetailBanner from './components/Banner'
+import DetailBaseInfo from './components/Baseinfo'
+import DetailTciketList from './components/TciketList'
 export default {
   name: 'Details',
   components: {
+    DetailHeader,
     DetailBanner,
     DetailBaseInfo,
     DetailTciketList
@@ -21,6 +24,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  div
+  .detail-page
+    height: 20rem
     background-color: #f5f5f5
 </style>
