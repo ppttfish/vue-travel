@@ -1,17 +1,34 @@
 <template>
   <div class="home-recommend">
-    <div class="recommend-title">推荐攻略</div>
-     <a v-for="item of list" :key="item.id" class="recommend-block border-bottom">
-      <div class="title">{{ item.title }}</div>
-      <div class="main-body">
-        <img :src="item.imgUrl" class="recommend-img" alt="">
-        <div class="summary">{{ item.summary }}</div>
-        <div class="extra">
-          270315浏览
-          <div class="btn">问答</div>
+    <div class="recommend-title">
+      <img  class="title-img" src="http://img1.qunarzz.com/piao/fusion/1711/89/ebc329f16c55bb02.png" alt="">
+      <span class="rmd-title">猜你喜欢</span>
+    </div>
+    <ul v-for="item of list" :key="item.id" class="recommend-block border-bottom">
+      <router-link
+                  class="recommend-item"
+                  tag="li"
+                  :to="'/detail/' + item.id"
+      >
+        <div class="item-img">
+          <img :src="item.imgUrl" alt="">
+          <div class="img-exra">可订明日</div>
         </div>
-      </div>
-    </a>
+        <div class="item-info">
+          <div class="item-info-title">{{ item.name }}</div>
+          <div class="item-commit">
+            <span class="iconfont commit-start">&#xe7f1;&#xe7f1;&#xe7f1;&#xe7f1;</span>
+            <span class="commit-num">{{ item.commit }}条评论</span>
+          </div>
+          <div class="item-price">
+            <span class="real-price">￥<em>{{ item.price }}</em></span>
+            起
+            <span class="item-address">{{ item.address }}</span>
+          </div>
+        </div>
+      </router-link>
+    </ul>
+    <a class="more-items">查看所有产品</a>
   </div>
 </template>
 
@@ -27,58 +44,85 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .home-recommend
-    text-align: center
+    margin-top: .2rem
+    background-color: #fff
     .recommend-title
-      color: #999
-      height: .6rem
-      line-height: .6rem
-      background-color: #f8f8f8
+      padding: .24rem 0 .26rem
+      .title-img
+        display: inline-block
+        width: .3rem
+        height: .3rem
+        margin-left: .2rem
+        vertical-align: top
+      .rmd-title
+        display: inline-block
+        height: .44rem
+        color: #212121
+        font-size: .32rem
+        line-height: .44rem
     .recommend-block
       display: block
       box-sizing: border-box
-      min-height: 3rem
-      padding: .25rem
+      margin-left : .24rem
       color: black
-      .title
-        text-align: left
-        font-size: .4rem
-        font-weight: 300
-        font-family: 'PingFangSC-Light',Arial,Helvetica,sans-serif,"Hiragino Sans GB";
-      .main-body
-        overflow: hidden
-        position: relative
-        .recommend-img
-          width: 2.59rem
-          height: 1.8rem
-          margin-top: .2rem
-          margin-right: .18rem
+      .recommend-item
+        overflow hidden
+        padding: .2rem 0
+        .item-img
           float: left
-        .summary
-          ellipsis(3)
-          text-align: left
-          padding-top: .3rem
-          color: #999
-          line-height: .36rem
           overflow: hidden
-        .extra
-          position: absolute
-          box-sizing: border-box
-          padding-left: 2.8rem
-          text-align: left
-          width: 100%
-          left: 0
-          bottom: 0
-          line-height: .4rem;
-          color: #999
-          font-size: .25rem
-          .btn
+          width: 2rem
+          height: 2rem
+          img
+            width: 100%
+          .img-exra
             position: absolute
-            bottom: 0
-            right: 0
-            border-color: #30d2bf;
-            color: #30d2bf;
-            border: 1px solid;
-            border-radius: 3px;
-            font-size: .1rem;
-            padding: 0 0.15rem;
+            box-sizing: border-box
+            top: .2rem
+            padding: .05rem
+            font-size: .2rem
+            background-color: #01CDE7
+            color: #fff
+        .item-info
+          overflow: hidden
+          padding-left: .22rem
+          .item-info-title
+            margin-top: .26rem
+            height: .44rem
+            color: #212121
+            font-size: .32rem
+            line-height: .44rem
+          .item-commit
+            margin-top: .14rem
+            height: .34rem
+            .commit-start
+              color: #ffb436
+              font-size: .24rem
+              line-height: .34rem
+            .commit-num
+              color: #616161
+              font-size: .24rem
+              line-height: .26rem
+              vertical-align: text-bottom
+          .item-price
+            position: relative
+            margin-top: .22rem
+            color: #616161
+            font-size: .24rem
+            line-height: .4rem
+            .real-price
+              color: #ff8300
+            em
+              font-size: .4rem
+            .item-address
+              position: absolute
+              right: .24rem
+              bottom: 0
+  .more-items
+    display: block;
+    padding: .2rem 0;
+    color: #00afc7;
+    font-size: .28rem;
+    line-height: .4rem;
+    text-align: center;
 </style>

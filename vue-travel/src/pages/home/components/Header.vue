@@ -46,24 +46,25 @@ export default {
       margin-left: .15rem
       color: #ccc
       background-color: #fff
-      border-radius: .1rem
+      border-radius: .06rem
       .search-icon
         padding-left: .1rem
         font-size: .016rem
     .header-right
-      text-align: center
+      height: 100%
+      line-height: $navHeight
+      padding: 0 .26rem
       color: #fff
+      text-align: center
       a
         display: inline-block
         color: #fff
-        padding: 0 .1rem
       &::after
          content: ''
          display: inline-block
          position: relative
          width: 1px
          top: .08rem
-         left: -.1rem
          border: 6px solid
          border-color: #fff transparent transparent
 </style>

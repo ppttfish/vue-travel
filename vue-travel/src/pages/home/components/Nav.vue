@@ -24,6 +24,7 @@ export default {
     height: 0
     padding-bottom: 40%
     margin: .2rem 0
+    background-color: #fff
     .nav-li
       box-sizing: border-box
       float: left
