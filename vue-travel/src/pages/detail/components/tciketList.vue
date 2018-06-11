@@ -18,7 +18,7 @@
       </div>
       <div class="tk-btn">
         <div class="tk-price">￥<em>298</em></div>
-        <div class="tk-buy-btn">预定</div>
+        <div @click="handleBuyClick" class="tk-buy-btn">预定</div>
       </div>
     </div>
     <div class="tk-item border-top">
@@ -38,7 +38,7 @@
       </div>
       <div class="tk-btn">
         <div class="tk-price">￥<em>298</em></div>
-        <div class="tk-buy-btn">预定</div>
+        <div @click="handleBuyClick" class="tk-buy-btn">预定</div>
       </div>
     </div>
     <div class="tk-item border-top">
@@ -58,7 +58,7 @@
       </div>
       <div class="tk-btn">
         <div class="tk-price">￥<em>298</em></div>
-        <div class="tk-buy-btn">预定</div>
+        <div  @click="handleBuyClick" class="tk-buy-btn">预定</div>
       </div>
     </div>
   </div>
@@ -66,7 +66,12 @@
 
 <script>
 export default {
-  name: 'detailTciketList'
+  name: 'detailTciketList',
+  methods: {
+    handleBuyClick () {
+      this.$emit('buy')
+    }
+  }
 }
 </script>
 
