@@ -1,9 +1,11 @@
 <template>
   <div class="tciketList">
     <h3 class="tk-title border-bottom">去哪儿推荐</h3>
-    <div class="tk-item border-top">
+    <div class="tk-item border-top"
+         v-for="item of list" :key="item.id"
+    >
       <div class="tk-info">
-        <h3 class="tk-title">【随买随用】《长恨歌》第一场中区</h3>
+        <h3 class="tk-title">{{ item.name }}</h3>
         <span class="tk-tips">
           <img src="https://img1.qunarzz.com/piao/fusion/1804/25/792e9929973a9902.png" alt="">
           可订明日
@@ -17,48 +19,8 @@
         </div>
       </div>
       <div class="tk-btn">
-        <div class="tk-price">￥<em>298</em></div>
+        <div class="tk-price">￥<em>{{ item.price }}</em></div>
         <div @click="handleBuyClick" class="tk-buy-btn">预定</div>
-      </div>
-    </div>
-    <div class="tk-item border-top">
-      <div class="tk-info">
-        <h3 class="tk-title">【随买随用】《长恨歌》第一场中区</h3>
-        <span class="tk-tips">
-          <img src="https://img1.qunarzz.com/piao/fusion/1804/25/792e9929973a9902.png" alt="">
-          可订明日
-        </span>
-        <div class="tk-exra">
-          <span class="border">
-            <img src="https://img1.qunarzz.com/piao/fusion/1804/b0/c3cf2897c74ecc02.png" alt="">
-            自营
-          </span>
-          <span class="border">条件退</span>
-        </div>
-      </div>
-      <div class="tk-btn">
-        <div class="tk-price">￥<em>298</em></div>
-        <div @click="handleBuyClick" class="tk-buy-btn">预定</div>
-      </div>
-    </div>
-    <div class="tk-item border-top">
-      <div class="tk-info">
-        <h3 class="tk-title">【随买随用】《长恨歌》第一场中区</h3>
-        <span class="tk-tips">
-          <img src="https://img1.qunarzz.com/piao/fusion/1804/25/792e9929973a9902.png" alt="">
-          可订明日
-        </span>
-        <div class="tk-exra">
-          <span class="border">
-            <img src="https://img1.qunarzz.com/piao/fusion/1804/b0/c3cf2897c74ecc02.png" alt="">
-            自营
-          </span>
-          <span class="border">条件退</span>
-        </div>
-      </div>
-      <div class="tk-btn">
-        <div class="tk-price">￥<em>298</em></div>
-        <div  @click="handleBuyClick" class="tk-buy-btn">预定</div>
       </div>
     </div>
   </div>
@@ -67,6 +29,9 @@
 <script>
 export default {
   name: 'detailTciketList',
+  props: {
+    list: Array
+  },
   methods: {
     handleBuyClick () {
       this.$emit('buy')
@@ -94,8 +59,7 @@ export default {
       .tk-info
         flex: 2.92
         .tk-title
-          height: .52rem
-          line-height: .52rem
+          line-height: .45rem
           margin-right: .1rem
           padding-bottom: 0
           color: #616161

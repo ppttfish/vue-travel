@@ -11,13 +11,16 @@
     >
       <span class="iconfont back">&#xe697;</span>
     </router-link>
-    <h1 class="detial-title">长恨歌</h1>
+    <h1 class="detial-title">{{ name }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'DetailHeader',
+  props: {
+    name: String
+  },
   data () {
     return {
       showHead: false,

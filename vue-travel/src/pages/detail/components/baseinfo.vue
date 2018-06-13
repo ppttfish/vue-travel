@@ -3,13 +3,13 @@
     <div class="flex-item flex-card">
       <div class="left-card border-right">
         <div>
-          <span class="item-score">4.9</span>
+          <span class="item-score">{{ baseInfo.score }}</span>
           <span class="score-card-text">分</span>
           <span class="score-card-text">很棒</span>
         </div>
         <div>
-          <span class="card-text">8687条评论</span>
-          <span class="card-text">4条攻略</span>
+          <span class="card-text">{{ baseInfo.commit + '条评论' }}</span>
+          <span class="card-text">{{ baseInfo.strategy + '条攻略' }}</span>
           <span class="iconfont card-right-arrow">&#xe601;</span>
         </div>
       </div>
@@ -24,7 +24,7 @@
     </div>
     <div class="item-address border-top">
       <span class="iconfont item-address-icon">&#xe679;</span>
-      <p>陕西省西安市临潼区华清路38号华清池</p>
+      <p>{{ baseInfo.adress }}</p>
       <span class="iconfont right-arrow">&#xe601;</span>
     </div>
   </div>
@@ -32,7 +32,10 @@
 
 <script>
 export default {
-  name: 'DetailBaseInfo'
+  name: 'DetailBaseInfo',
+  props: {
+    baseInfo: Object
+  }
 }
 </script>
 

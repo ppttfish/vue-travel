@@ -1,10 +1,10 @@
 <template>
   <div class="item-banner">
     <div @click="handleBannerClick" class="img-wrapper">
-      <img src="//img1.qunarzz.com/sight/p0/1505/18/18ffcca94b1b7ca2.water.jpg_600x330_cd78f1b7.jpg" alt="">
+      <img :src="bannerImgUrl" alt="">
     </div>
     <div class="banner-info">
-      <div class="banner-title">长恨歌</div>
+      <div class="banner-title">{{ name }}</div>
     </div>
     <div class="banner-img-icon">
       <span class="iconfont">&#xe61d;</span>
@@ -28,6 +28,10 @@
 import CommonGallery from 'common/gallery'
 export default {
   name: 'DetailBanner',
+  props: {
+    name: String,
+    bannerImgUrl: String
+  },
   components: {
     CommonGallery
   },

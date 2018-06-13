@@ -1,9 +1,9 @@
 <template>
   <div class="detail-page">
-    <detail-header></detail-header>
-    <detail-banner></detail-banner>
-    <detail-base-info></detail-base-info>
-    <detail-tciket-list @buy="handleBuyBtn"></detail-tciket-list>
+    <detail-header :name="name"></detail-header>
+    <detail-banner :bannerImgUrl="bannerImgUrl" :name="name"></detail-banner>
+    <detail-base-info :baseInfo="this.baseInfo"></detail-base-info>
+    <detail-tciket-list :list="this.ticketsList" @buy="handleBuyBtn"></detail-tciket-list>
     <detail-order @close="handleOrderClose" v-show="showOrder"></detail-order>
     <detail-mask @maskClick="handleOrderClose" v-show="showMask"></detail-mask>
   </div>
@@ -16,6 +16,7 @@ import DetailBaseInfo from './components/Baseinfo'
 import DetailTciketList from './components/TciketList'
 import DetailOrder from './components/Order'
 import DetailMask from 'common/mask'
+import axios from 'axios'
 export default {
   name: 'Details',
   components: {
@@ -29,7 +30,11 @@ export default {
   data () {
     return {
       showOrder: false,
-      showMask: false
+      showMask: false,
+      baseInfo: {},
+      ticketsList: [],
+      name: '',
+      bannerImgUrl: ''
     }
   },
   methods: {
@@ -38,7 +43,23 @@ export default {
     },
     handleBuyBtn () {
       this.showOrder = this.showMask = true
+    },
+    getDetailInfo () {
+      axios.get('/api/detail.json')
+        .then(this.logInfo)
+    },
+    logInfo (res) {
+      let id = this.$route.params.id.substring(2) - 1
+      console.log(id)
+      res = res.data
+      this.baseInfo = res.data.itemList[id].commitList
+      this.ticketsList = res.data.itemList[id].ticketsList
+      this.name = res.data.itemList[id].name
+      this.bannerImgUrl = res.data.itemList[id].bannerImgUrl
     }
+  },
+  mounted () {
+    this.getDetailInfo()
   }
 }
 </script>
